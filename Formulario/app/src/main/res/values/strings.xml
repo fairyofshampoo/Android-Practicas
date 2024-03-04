@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Form</string>
+    <string name="name">Name</string>
+    <string name="birth_date">Birth date</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="register">Register</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="select_gender">Select gender</string>
+    <string name="btn_clean_form">Clean form</string>
+    <string name="date_format">MM/DD/YYYY</string>
+    <string name="missing_fields">Please fill in all required fields.</string>
+    <string name="invalid_email">Please enter a valid email address.</string>
+    <string name="passwords_mismatch">Passwords do not match.</string>
+    <string name="registration_successful">Registration successful.</string>
+    <string name="btn_clean_form_clicked">Form cleaned</string>
+    <string name="missing_name">Write your name, please.</string>
+    <string name="missing_birth_date">Write your birth date, please.</string>
+    <string name="missing_email">Write your email, please.</string>
+    <string name="missing_password">Write your password and repeat it, please.</string>
+    <string name="invalid_birth_date">Write you birthday like MM/DD/YYYY.</string>
+
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+</resources>

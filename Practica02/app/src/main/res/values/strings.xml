@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Practica02</string>
+    <string name = "lbl_name">your name:</string>
+    <string name="hint_txt">write here</string>
+    <string name="btn_send">send</string>
+    <string name="write_your_name_message">Write your name</string>
+    <string name="welcome_message">Hi %s ! welcome</string>
+</resources>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BasketballCount</string>
+    <string name="visitant_text">Visitante</string>
+    <string name="minus_one">-1</string>
+    <string name="plus_two">+2</string>
+    <string name="plus_one">+1</string>
+    <string name="local">Local</string>
+    <string name="vs">VS</string>
+    <string name="local_visitant">LOCAL - VISITANT</string>
+</resources>

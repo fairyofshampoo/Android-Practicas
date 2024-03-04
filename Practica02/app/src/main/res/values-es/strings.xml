@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Practica02</string>
+    <string name = "lbl_name">tu nombre:</string>
+    <string name="hint_txt">escribe aquí</string>
+    <string name="btn_send">enviar</string>
+    <string name="write_your_name_message">Escribe tu nombre</string>
+    <string name="welcome_message">Hola %s ! bienvenido</string>
+</resources>
