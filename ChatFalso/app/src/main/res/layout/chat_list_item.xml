@@ -35,17 +35,17 @@
             android:layout_height="29dp"
             android:layout_alignParentEnd="true"
             android:src="@drawable/human_icon"
-            android:visibility="gone"/>
+            android:visibility="invisible"/>
         <TextView
             android:id="@+id/human_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/human_icon"
+            android:layout_toStartOf="@id/human_icon"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:visibility="gone"
+            android:visibility="invisible"
             android:textColor="@color/black"
             tools:text="Hola, chat" />
     </RelativeLayout>

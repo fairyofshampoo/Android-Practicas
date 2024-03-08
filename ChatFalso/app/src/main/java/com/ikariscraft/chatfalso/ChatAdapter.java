@@ -16,10 +16,11 @@ import com.ikariscraft.chatfalso.databinding.ChatListItemBinding;
 import java.io.Console;
 
 public class ChatAdapter extends ListAdapter<Chat, ChatAdapter.ChatViewHolder> {
-    public static final DiffUtil.ItemCallback<Chat> DIFF_CALLBACK = new DiffUtil.ItemCallback<Chat>() {
+    public static final DiffUtil.ItemCallback<Chat> DIFF_CALLBACK
+            = new DiffUtil.ItemCallback<Chat>() {
         @Override
         public boolean areItemsTheSame(@NonNull Chat oldMessage, @NonNull Chat newMessage) {
-            return oldMessage.getText().equals(newMessage.getText());
+            return oldMessage.equals(newMessage);
         }
 
         @Override
@@ -28,6 +29,9 @@ public class ChatAdapter extends ListAdapter<Chat, ChatAdapter.ChatViewHolder> {
         }
     };
 
+    protected ChatAdapter() {
+        super(DIFF_CALLBACK);
+    }
 
     @NonNull
     @Override
@@ -41,19 +45,6 @@ public class ChatAdapter extends ListAdapter<Chat, ChatAdapter.ChatViewHolder> {
         Chat chat = getItem(position);
         holder.bind(chat);
     }
-    private OnItemClickListener onItemClickListener;
-
-    public interface OnItemClickListener {
-        void onItemClick(Chat chatMessage);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
-    }
-
-    protected ChatAdapter() {
-        super(DIFF_CALLBACK);
-    }
 
     class ChatViewHolder extends RecyclerView.ViewHolder {
         private final ChatListItemBinding binding;
@@ -64,25 +55,20 @@ public class ChatAdapter extends ListAdapter<Chat, ChatAdapter.ChatViewHolder> {
         }
 
         public void bind(Chat chatMessage) {
+            binding.botText.setText(chatMessage.getText());
+            binding.humanText.setText(chatMessage.getText());
             if (chatMessage.isBot()) {
-                binding.botText.setText(chatMessage.getText());
                 binding.botText.setVisibility(View.VISIBLE);
                 binding.chatbotIcon.setVisibility(View.VISIBLE);
-                binding.humanText.setVisibility(View.GONE);
-                binding.humanIcon.setVisibility(View.GONE);
+                binding.humanText.setVisibility(View.INVISIBLE);
+                binding.humanIcon.setVisibility(View.INVISIBLE);
             } else {
                 binding.humanText.setVisibility(View.VISIBLE);
                 binding.humanIcon.setVisibility(View.VISIBLE);
-                binding.humanText.setText(chatMessage.getText());
                 binding.humanText.setTextColor(Color.BLACK);
-                binding.botText.setVisibility(View.GONE);
-                binding.chatbotIcon.setVisibility(View.GONE);
+                binding.botText.setVisibility(View.INVISIBLE);
+                binding.chatbotIcon.setVisibility(View.INVISIBLE);
             }
-            binding.getRoot().setOnClickListener(v -> {
-                if (onItemClickListener != null) {
-                    onItemClickListener.onItemClick(chatMessage);
-                }
-            });
             binding.executePendingBindings();
         }
     }
