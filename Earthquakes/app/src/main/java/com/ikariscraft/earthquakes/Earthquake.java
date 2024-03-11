@@ -1,5 +1,7 @@
 package com.ikariscraft.earthquakes;
 
+import java.util.Objects;
+
 public class Earthquake {
     private String id;
     private String place;
@@ -63,5 +65,18 @@ public class Earthquake {
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Earthquake)) return false;
+        Earthquake that = (Earthquake) o;
+        return Double.compare(that.getMagnitude(), getMagnitude()) == 0 && getTime() == that.getTime() && Double.compare(that.getLongitude(), getLongitude()) == 0 && Double.compare(that.getLatitude(), getLatitude()) == 0 && Objects.equals(getId(), that.getId()) && Objects.equals(getPlace(), that.getPlace());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getPlace(), getMagnitude(), getTime(), getLongitude(), getLatitude());
     }
 }
