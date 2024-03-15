@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.ikariscraft.api.EarthquakeJSONResponse;
+import com.ikariscraft.api.Feature;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,22 +24,37 @@ public class MainViewModel extends ViewModel {
         return eqList;
     }
 
+    private List<Earthquake> getEarthquakesWithMoshi(EarthquakeJSONResponse body) {
+        ArrayList<Earthquake> eqList = new ArrayList<>();
+        List<Feature> features = body.getFeatures();
+        for (Feature feature: features) {
+            String id = feature.getId();
+            double magnitude = feature.getProperties().getMagnitude();
+            String place = feature.getProperties().getPlace();
+            long time = feature.getProperties().getTime();
+            double longitude = feature.getGeometry().getLongitude();
+            double latitude = feature.getGeometry().getLatitude();
+            Earthquake earthquake = new Earthquake(id, place, magnitude, time,
+                    latitude, longitude);
+            eqList.add(earthquake);
+        }
+        return eqList;
+    }
+
     public void getEarthquakes(){
         ApiClient.Service service = ApiClient.getInstance().getService();
-
-        service.getEarthquakes().enqueue(new Callback<String>() {
+        service.getEarthquakes().enqueue(new Callback<EarthquakeJSONResponse>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                List<Earthquake> eql = parseEarthquake(response.body());
-                eqList.setValue(eql);
+            public void onResponse(Call<EarthquakeJSONResponse > call,
+                                   Response<EarthquakeJSONResponse > response) {
+                List<Earthquake> earthquakeList = getEarthquakesWithMoshi(response.body());
+                eqList.setValue(earthquakeList);
             }
-
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
-
-            }
+            public void onFailure(Call<EarthquakeJSONResponse> call, Throwable t) { }
         });
     }
+
 
     private List<Earthquake> parseEarthquake(String body) {
         ArrayList<Earthquake> eql = new ArrayList<>();
@@ -59,7 +77,7 @@ public class MainViewModel extends ViewModel {
             }
 
         } catch (JSONException e) {
-            throw new RuntimeException(e);
+
         }
         return  eql;
     }

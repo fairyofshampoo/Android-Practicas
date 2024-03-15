@@ -1,20 +1,22 @@
 package com.ikariscraft.earthquakes;
 
+import com.ikariscraft.api.EarthquakeJSONResponse;
+
 import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.converter.moshi.MoshiConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 import retrofit2.http.GET;
 
 public class ApiClient {
 
-    public interface Service{
+    public interface Service {
         @GET("all_hour.geojson")
-        Call<String> getEarthquakes();
+        Call<EarthquakeJSONResponse> getEarthquakes();
     }
-
-    Retrofit retrofit = new Retrofit.Builder()
+    private final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/")
-            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create())
             .build();
 
     Service service;

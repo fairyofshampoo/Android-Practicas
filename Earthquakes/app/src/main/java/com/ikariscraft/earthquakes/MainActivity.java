@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.ikariscraft.earthquakes.databinding.ActivityMainBinding;
 
@@ -21,12 +22,15 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
 
         setContentView(binding.getRoot());
-        binding.eqRecycler.setLayoutManager(new LinearLayoutManager(this));
-        EqAdapter adapter = new EqAdapter();
-        binding.eqRecycler.setAdapter(adapter);
-
 
         MainViewModel viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+
+        binding.eqRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+        EqAdapter adapter = new EqAdapter();
+        adapter.setOnItemClickListener(earthquake ->
+                Toast.makeText(MainActivity.this, earthquake.getPlace(), Toast.LENGTH_SHORT).show());
+        binding.eqRecycler.setAdapter(adapter);
 
         viewModel.getEqList().observe(this, eqList -> {
 
