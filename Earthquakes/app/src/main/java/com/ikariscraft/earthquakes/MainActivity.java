@@ -1,12 +1,10 @@
 package com.ikariscraft.earthquakes;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.ikariscraft.earthquakes.databinding.ActivityMainBinding;
