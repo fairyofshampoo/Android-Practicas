@@ -1,4 +1,4 @@
-package com.ikariscraft.api;
+package com.ikariscraft.earthquakes.api;
 
 import java.util.List;
 

@@ -1,7 +1,9 @@
-package com.ikariscraft.earthquakes;
+package com.ikariscraft.earthquakes.main;
 
-import com.ikariscraft.api.EarthquakeJSONResponse;
-import com.ikariscraft.api.Feature;
+import com.ikariscraft.earthquakes.Earthquake;
+import com.ikariscraft.earthquakes.api.ApiClient;
+import com.ikariscraft.earthquakes.api.EarthquakeJSONResponse;
+import com.ikariscraft.earthquakes.api.Feature;
 
 import java.util.ArrayList;
 import java.util.List;

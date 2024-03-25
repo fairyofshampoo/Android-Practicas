@@ -1,4 +1,4 @@
-package com.ikariscraft.api;
+package com.ikariscraft.earthquakes.api;
 import com.squareup.moshi.Json;
 public class Properties {
     @Json(name="mag")

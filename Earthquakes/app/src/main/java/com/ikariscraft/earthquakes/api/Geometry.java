@@ -1,4 +1,4 @@
-package com.ikariscraft.api;
+package com.ikariscraft.earthquakes.api;
 
 public class Geometry {
     private double[] coordinates;

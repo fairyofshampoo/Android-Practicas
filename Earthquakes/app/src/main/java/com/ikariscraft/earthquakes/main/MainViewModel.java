@@ -1,8 +1,12 @@
-package com.ikariscraft.earthquakes;
+package com.ikariscraft.earthquakes.main;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.ikariscraft.earthquakes.Earthquake;
+import com.ikariscraft.earthquakes.main.MainRepository;
+
 import java.util.List;
 
 

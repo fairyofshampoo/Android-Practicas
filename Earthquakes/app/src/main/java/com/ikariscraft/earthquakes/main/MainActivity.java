@@ -1,4 +1,4 @@
-package com.ikariscraft.earthquakes;
+package com.ikariscraft.earthquakes.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;

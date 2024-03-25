@@ -1,11 +1,8 @@
-package com.ikariscraft.earthquakes;
-
-import com.ikariscraft.api.EarthquakeJSONResponse;
+package com.ikariscraft.earthquakes.api;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 import retrofit2.http.GET;
 
 public class ApiClient {
