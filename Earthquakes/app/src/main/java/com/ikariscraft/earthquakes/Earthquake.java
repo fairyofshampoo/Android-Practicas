@@ -1,8 +1,16 @@
 package com.ikariscraft.earthquakes;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.Objects;
 
+@Entity(tableName = "earthquakes")
 public class Earthquake {
+    @PrimaryKey
+    @NonNull
     private String id;
     private String place;
     private double magnitude;
@@ -11,6 +19,7 @@ public class Earthquake {
     private double latitude;
 
     public Earthquake(String id, String place, double magnitude, long time, double longitude, double latitude) {
+
         this.id = id;
         this.place = place;
         this.magnitude = magnitude;
