@@ -6,4 +6,5 @@
     <string name="time">Time:</string>
     <string name="latitude">Latitude:</string>
     <string name="id">ID:</string>
+    <string name="magnitude_format">%.2f</string>
 </resources>

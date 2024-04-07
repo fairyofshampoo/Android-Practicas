@@ -1,5 +1,8 @@
 package com.ikariscraft.earthquakes;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -8,7 +11,7 @@ import androidx.room.PrimaryKey;
 import java.util.Objects;
 
 @Entity(tableName = "earthquakes")
-public class Earthquake {
+public class Earthquake implements Parcelable {
     @PrimaryKey
     @NonNull
     private String id;
@@ -27,12 +30,33 @@ public class Earthquake {
         this.longitude = longitude;
         this.latitude = latitude;
     }
+    protected Earthquake(Parcel in){
+        id = Objects.requireNonNull(in.readString());
+        place = in.readString();
+        magnitude = in.readDouble();
+        time = in.readLong();
+        longitude = in.readDouble();
+        latitude = in.readDouble();
+    }
 
+    public static final Creator<Earthquake> CREATOR = new Creator<Earthquake>() {
+        @Override
+        public Earthquake createFromParcel(Parcel in) {
+            return new Earthquake(in);
+        }
+
+        @Override
+        public Earthquake[] newArray(int size) {
+            return new Earthquake[size];
+        }
+    };
+
+    @NonNull
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 
@@ -87,5 +111,20 @@ public class Earthquake {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getPlace(), getMagnitude(), getTime(), getLongitude(), getLatitude());
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int flags) {
+        parcel.writeString(id);
+        parcel.writeString(place);
+        parcel.writeDouble(magnitude);
+        parcel.writeLong(time);
+        parcel.writeDouble(longitude);
+        parcel.writeDouble(latitude);
     }
 }

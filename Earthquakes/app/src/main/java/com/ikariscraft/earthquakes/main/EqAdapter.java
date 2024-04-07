@@ -1,5 +1,6 @@
 package com.ikariscraft.earthquakes.main;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ikariscraft.earthquakes.Earthquake;
+import com.ikariscraft.earthquakes.R;
 import com.ikariscraft.earthquakes.databinding.EqListItemBinding;
 
 public class EqAdapter extends ListAdapter <Earthquake, EqAdapter.EqViewHolder> {
@@ -30,8 +32,10 @@ public class EqAdapter extends ListAdapter <Earthquake, EqAdapter.EqViewHolder> 
                 }
             };
 
-    protected EqAdapter() {
+    Context context;
+    protected EqAdapter(Context context) {
         super(DIFF_CALLBACK);
+        this.context = context;
     }
 
     @NonNull
@@ -65,7 +69,7 @@ public class EqAdapter extends ListAdapter <Earthquake, EqAdapter.EqViewHolder> 
         }
         public void bind(Earthquake earthquake) {
 
-            binding.magnitudeText.setText(String.valueOf(earthquake.getMagnitude()));
+            binding.magnitudeText.setText(context.getString(R.string.magnitude_format,earthquake.getMagnitude()));
             binding.placeText.setText(earthquake.getPlace());
             binding.getRoot().setOnClickListener( v -> {
                 onItemClickListener.onItemClick(earthquake);
